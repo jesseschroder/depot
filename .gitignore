@@ -31,3 +31,4 @@ yarn-debug.log*
 .yarn-integrity
 .idea/
 config.old
+.DS_STORE
