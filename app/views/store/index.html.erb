@@ -2,18 +2,12 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Your Pragmatic Catalog</h1>
-<ul class="catatlog">
-  <% @products.each do |product| %>
-  <li>
-    <%= image_tag(product.image_url) %>
-    <h2><%= product.title %></h2>
-    <p>
-      <%= sanitize(product.description) %>
-    </p>
-    <div class="price">
-      <%= product.price %>
-    </div>
-  </li>
-  <% end %>
-</ul>
+<h1 class="Polaris-Heading">Your Pragmatic Catalog</h1>
+<div class="Polaris-Layout">
+  <div class="Polaris-Layout__Section">
+    <% @products.each do |product| %>
+      <%= render 'product_details', product: product %>
+    <% end %>
+  </div>
+</div>
+
