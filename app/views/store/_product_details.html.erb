@@ -1,0 +1,15 @@
+<div class="Polaris-Card">
+  <%= image_tag(product.image_url, class: 'Polaris_Thumbnail__Image', align: 'left') %>
+  <div class="Polarid-Card_Header">
+    <h2 class="Polaris-Heading"><%= product.title %></h2>
+  </div>
+  <div class="Polaris-Card_Section">
+    <p>
+      <%= sanitize(product.description) %>
+    </p>
+    <br />
+    <div class="price">
+      <%= number_to_currency(product.price) %>
+    </div>
+  </div>
+</div>
