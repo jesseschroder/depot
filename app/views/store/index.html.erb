@@ -5,8 +5,12 @@
 <h1 class="Polaris-Heading">Your Pragmatic Catalog</h1>
 <div class="Polaris-Layout">
   <div class="Polaris-Layout__Section">
-    <% @products.each do |product| %>
-      <%= render 'product_details', product: product %>
+    <% cache @products do %>
+      <% @products.each do |product| %>
+        <% cache product do %>
+          <%= render 'product_details', product: product %>
+          <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
