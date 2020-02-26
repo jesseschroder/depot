@@ -7,4 +7,16 @@ class Product < ApplicationRecord
     message: 'must be a URL for GIF, JPG or PNG image'
   }
 
+  has_many :line_items
+
+  before_destroy :check_line_item_presence
+
+  private
+
+  def check_line_item_presence
+    unless line_items.empty?
+      errors.add(:base, 'Line Items present')
+      throw :abort
+    end
+  end
 end
