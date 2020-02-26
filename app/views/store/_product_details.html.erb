@@ -1,15 +1,18 @@
-<div class="Polaris-Card">
-  <%= image_tag(product.image_url, class: 'Polaris_Thumbnail__Image', align: 'left') %>
-  <div class="Polarid-Card_Header">
-    <h2 class="Polaris-Heading"><%= product.title %></h2>
-  </div>
-  <div class="Polaris-Card_Section">
+<!--<div class="Polaris-Card">-->
+<li>
+  <%= image_tag(product.image_url) %>
+<!--  <div class="Polarid-Card_Header">-->
+    <h2><%= product.title %></h2>
+<!--  </div>-->
+<!--  <div class="Polaris-Card_Section">-->
     <p>
       <%= sanitize(product.description) %>
     </p>
-    <br />
     <div class="price">
       <%= number_to_currency(product.price) %>
+      <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+<!--      <button type="button" class="Polaris-Button"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Add product</span></span></button></div>-->
     </div>
-  </div>
-</div>
+<!--  </div>-->
+</li>
+<!--</div>-->

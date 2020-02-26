@@ -10,7 +10,7 @@ two:
   description: MyText
   image_url: ruby.jpg
   price: 9.99
-three:
+ruby:
   title: Programming Ruby 1.9
   description: Ruby is the fastest growing and most exciting dynamic language out there.
   image_url: ruby.jpg
