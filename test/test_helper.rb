@@ -1,5 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
+require_relative 'authentication_helpers'
 require 'rails/test_help'
 
 class ActiveSupport::TestCase
@@ -11,3 +12,13 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  include AuthenticationHelpers
+end
+
+class ActionDispatch::SystemTestCase
+  include AuthenticationHelpers
+end
+
+
