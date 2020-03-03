@@ -49,4 +49,14 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'h2', 'Your Cart'
     assert_match flash[:notice], "Line item was successfully removed."
   end
+
+  test 'should create line item via ajax' do
+    assert_difference('LineItem.count') do
+      product = products(:ruby)
+      post line_items_url, params: { product_id: product.id, price: product.price }, xhr: true
+    end
+
+    assert_response :success
+    assert_match /<tr class=\\"line-item-highlight/, @response.body
+  end
 end
