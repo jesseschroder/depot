@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Ronald McDonald
+  address: 99 Rideau
+  email: theclown@mcdonalds.ca
+  pay_type: Check
+
+two:
+  name: Wendy
+  address: Dublin, Ohio
+  email: daves_hot_n_juicy@wendys.ca
+  pay_type: Credit Card
