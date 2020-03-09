@@ -1,0 +1,43 @@
+import React from 'react'
+import NoPayType from './NoPayType'
+import CredCardPayType from './CreditCardPayType'
+import CheckPayType from './CheckPayType'
+import PurchaseOrderPayType from './PurchaseOrderPayType'
+
+class PayTypeSelector extends React.Component {
+    onPayTypeSelected(event) {
+        this.setState({ selectedPayType: event.target.value })
+    }
+
+    constructor(props) {
+        super(props);
+        this.onPayTypeSelected = this.onPayTypeSelected.bind(this);
+        this.state = { selectedPayType: null };
+    }
+
+    render() {
+        let PayTypeCustomComponent = NoPayType;
+        if (this.state.selectedPayType == "Credit Card") {
+            PayTypeCustomComponent = CredCardPayType;
+        } else if (this.state.selectedPayType == "Check") {
+            PayTypeCustomComponent = CheckPayType;
+        } else if (this.state.selectedPayType == "Purchase Order") {
+            PayTypeCustomComponent = PurchaseOrderPayType;
+        }
+        return (
+            <div>
+               <div className="field">
+                    <label htmlFor="order_pay_type">Pay Type</label>
+                    <select id="order_pay_type" onChange={this.onPayTypeSelected} name="order[pay_type]">
+                        <option value="">Select a payment method</option>
+                        <option value="Check">Check</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Purchase Order">Purchase Order</option>
+                    </select>
+                </div>
+                <PayTypeCustomComponent />
+            </div>
+        );
+    }
+}
+export default PayTypeSelector
