@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   include ProductConcern
+  skip_before_action :authorize, only: [:who_bought]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :all_products, only: [:index, :update]
 
@@ -63,8 +64,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  def who_bought
+    @product = Product.find(params[:id])
+    @latest_order = @product.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to { |f| f.atom}
+    end
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
+
   def set_product
     @product = Product.find(params[:id])
   end

@@ -20,7 +20,9 @@
     <section class="content">
       <nav class="side_nav">
         <div id="cart" class="carts">
-          <%= render_if @cart && @cart.line_items.any?, @cart %>
+          <% unless checkout_page %>
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+          <% end %>
         </div>
         <ul>
           <li><%= link_to 'Home', store_index_path %></li>
