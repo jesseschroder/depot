@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include ProductConcern
-  skip_before_action :authorize, only: [:who_bought]
+  skip_before_action :authorize_web, only: [:who_bought]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :all_products, only: [:index, :update]
 
@@ -73,11 +73,6 @@ class ProductsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-
-  def set_product
-    @product = Product.find(params[:id])
-  end
 
   # Only allow a list of trusted parameters through.
   def product_params

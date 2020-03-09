@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
   include CurrentCart, ProductConcern
-  skip_before_action :authorize
+  skip_before_action :authorize_web
   before_action :set_cart
   before_action :all_products, only: :index
 
