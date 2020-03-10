@@ -34,6 +34,7 @@ class OrdersTest < ApplicationSystemTestCase
     end
 
     order = Order.order(:created_at).last
+    mail = ActionMailer::Base.deliveries.last
 
     assert_equal 'Ronald McDonald', order.name
     assert_equal 'theclown@mcdonalds.ca', order.email
@@ -41,6 +42,9 @@ class OrdersTest < ApplicationSystemTestCase
     assert_equal 'Check', order.pay_type
     assert_equal 1, order.line_items.size
 
+    assert_equal ['theclown@mcdonalds.ca'], mail.to
+    assert_equal 'The Burger King <theking@bklounge.ca>', mail[:from].value
+    assert_equal 'Pragmatic Store Order Confirmation', mail.subject
   end
 
   test "updating a Order" do
